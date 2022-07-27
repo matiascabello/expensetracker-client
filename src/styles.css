@@ -1,1 +1,20 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+body {
+    /* background-color: #004040; */
+    background-color: black;
+    font-family: 'Roboto', sans-serif;;
+}
+
+.balance {
+    font-size: 3em;
+}
+
+.balance-status {
+    border: 0;
+    background-color: #0098f3;
+    color: white;
+}

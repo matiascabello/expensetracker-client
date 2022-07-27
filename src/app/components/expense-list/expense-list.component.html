@@ -1,0 +1,9 @@
+<div class="d-flex justify-content-center">
+  <div *ngIf="expenses.length == 0 && isLoading == false">No movements yet!</div>
+  <div class="spinner-border text-primary" role="status" *ngIf="isLoading == true">
+      <span class="visually-hidden">Loading...</span>
+  </div>
+</div>
+<app-expense-list-item *ngFor="let expense of expenses" [expense]="expense" (deleteExpense)="deleteExpense($event)"></app-expense-list-item>
+<app-data-item [thingTest]="thingTest"></app-data-item>
+

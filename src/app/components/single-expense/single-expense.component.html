@@ -1,0 +1,15 @@
+<div *ngIf="isLoading == true">Loading...</div>
+<div *ngIf="isLoading == false">
+    <ul class="list-group">
+        <li class="list-group-item"><b>{{expense.category_name}}</b></li>
+        <li class="list-group-item">Type: {{expense.type}}</li>
+        <li class="list-group-item">Amount: $ {{expense.amount}}</li>
+        <li class="list-group-item">Date: {{expense.date}}</li>
+        <li class="list-group-item">Description: {{expense.description}}</li>
+    </ul>
+    <div class="d-flex justify-content-end mt-4">
+        <button type="button" class="btn btn-link">Go back</button>
+        <button type="button" class="btn btn-secondary" routerLink="/edit/{{expense.id}}">Edit</button>
+    </div>
+
+</div>

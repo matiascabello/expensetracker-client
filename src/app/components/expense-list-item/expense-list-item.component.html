@@ -1,0 +1,16 @@
+<div class="card mb-3">
+    <div class="card-body">
+        <div class="d-flex justify-content-between">
+            <div>{{expense.category_name}}</div>
+            <div [ngClass]="expense.type == 'income' ? 'income' : 'expense'">$ {{expense.amount}}</div>
+            <div>
+                <a routerLink="/edit/{{expense.id}}"><i class="bi bi-pencil-square"></i></a>
+                <span> | </span>
+                <a (click)="onDelete()">Delete</a>
+                <span> | </span>
+                <a routerLink="/expense/{{expense.id}}">View</a>
+            </div>
+        </div>
+    </div>
+</div>
+<app-confirmation-modal></app-confirmation-modal>
