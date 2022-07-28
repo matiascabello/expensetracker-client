@@ -1,16 +1,14 @@
 <div class="card mb-3">
     <div class="card-body">
-        <div class="d-flex justify-content-between">
+        <div class="d-flex justify-content-between align-items-center">
             <div>{{expense.category_name}}</div>
             <div [ngClass]="expense.type == 'income' ? 'income' : 'expense'">$ {{expense.amount}}</div>
-            <div>
-                <a routerLink="/edit/{{expense.id}}"><i class="bi bi-pencil-square"></i></a>
-                <span> | </span>
-                <a (click)="onDelete()">Delete</a>
-                <span> | </span>
-                <a routerLink="/expense/{{expense.id}}">View</a>
+            <div class="d-flex">
+                <button class="btn btn-primary btn-sm m-1" routerLink="/edit/{{expense.id}}">Edit</button>
+                <button class="btn btn-primary btn-sm m-1" routerLink="/expense/{{expense.id}}">View</button>
+                <button type="button" class="btn btn-danger btn-sm m-1" (click)="showAlert()">Delete</button>
             </div>
         </div>
     </div>
 </div>
-<app-confirmation-modal></app-confirmation-modal>
+<ng-template appPlaceholder></ng-template>

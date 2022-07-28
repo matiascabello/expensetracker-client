@@ -12,9 +12,10 @@ import { ExpenseListItemComponent } from './components/expense-list-item/expense
 import { ExpenseListComponent } from './components/expense-list/expense-list.component';
 import { ExpensesService } from './services/expenses.service';
 import { RemoveComma } from './pipes/removecomma.pipe';
-import { DataItemComponent } from './components/data-item/data-item.component';
 import { ConfirmationModalComponent } from './components/confirmation-modal/confirmation-modal.component';
 import { SingleExpenseComponent } from './components/single-expense/single-expense.component';
+import { AlertComponent } from './components/alert/alert.component';
+import { PlaceholderDirective } from './directives/placeholder.directive';
 
 @NgModule({
   declarations: [
@@ -25,9 +26,10 @@ import { SingleExpenseComponent } from './components/single-expense/single-expen
     ExpenseListItemComponent,
     ExpenseListComponent,
     RemoveComma,
-    DataItemComponent,
     ConfirmationModalComponent,
-    SingleExpenseComponent
+    SingleExpenseComponent,
+    AlertComponent,
+    PlaceholderDirective
   ],
   imports: [
     BrowserModule,

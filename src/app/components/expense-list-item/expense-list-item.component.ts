@@ -1,7 +1,9 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { PlaceholderDirective } from 'src/app/directives/placeholder.directive';
 
 import { Expense } from 'src/app/interfaces/expense.interface';
-import { ExpensesService } from 'src/app/services/expenses.service';
+import { AlertComponent } from '../alert/alert.component';
 
 @Component({
   selector: 'app-expense-list-item',
@@ -10,7 +12,12 @@ import { ExpensesService } from 'src/app/services/expenses.service';
 })
 export class ExpenseListItemComponent implements OnInit {
 
-  constructor(private expensesService: ExpensesService) { }
+  closeSubs!: Subscription;
+  deleteSubs!: Subscription;
+
+  @ViewChild(PlaceholderDirective, {static: false}) alertHost!: PlaceholderDirective;
+
+  constructor() {}
 
   ngOnInit(): void {
   }
@@ -23,6 +30,27 @@ export class ExpenseListItemComponent implements OnInit {
 
   onDelete() {
    this.deleteExpense.emit(this.expense.id);
+  }
+
+  showAlert() {
+
+    const hostViewContainerRef = this.alertHost.viewContainerRef;
+
+    hostViewContainerRef.clear();
+    const componentRef = hostViewContainerRef.createComponent(AlertComponent);
+
+    componentRef.instance.message = 'Are you sure that you want to delete this item?';
+    this.closeSubs = componentRef.instance.close.subscribe(() => {
+      this.closeSubs.unsubscribe();
+      hostViewContainerRef.clear();
+    })
+
+    this.deleteSubs = componentRef.instance.delete.subscribe(()=> {
+      this.deleteSubs.unsubscribe();
+      this.onDelete();
+      hostViewContainerRef.clear()
+    })
+
   }
 
 }

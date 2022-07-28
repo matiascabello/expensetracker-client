@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Expense } from 'src/app/interfaces/expense.interface';
-import { Thing } from 'src/app/interfaces/thing.interface';
 import { ExpensesService } from 'src/app/services/expenses.service';
 
 @Component({
@@ -13,16 +12,6 @@ export class ExpenseListComponent implements OnInit {
 
   expenses: Expense[] = [];
   isLoading: boolean = false;
-
-  thingTest: Thing = {
-    id: 234,
-    name: 'Cool thing!',
-    user: {
-      id: 45,
-      name: 'John Doe',
-      books: ['Book 1', 'Book 2', 'Book 3']
-    }
-  }; ;
 
   constructor(private expensesService: ExpensesService) { }
 
